@@ -125,9 +125,9 @@ exports.playCmd = rl =>{
 		    let quiz= toBeResolved[randomId];
             // let quiz = model.getByIndex(id);
 			//toBeResolved.splice(toBeResolved.indexOf(quizToAsk), 1);
-		    rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), respuesta2 => {
+		    rl.question(colorize(`${quiz.question}`, 'red'), respuesta2 => {
 		    if(respuesta2.toLowerCase().trim()=== (quiz.answer).toLowerCase().trim()){
-				log("Correcto",'green');
+				log("Respuesta correcta",'green');
 				score ++;
 				log(`Puntuacion ${colorize(score,'green')} `);
 				//model.update();
@@ -135,7 +135,7 @@ exports.playCmd = rl =>{
 				playOne();
 
 		     } else{
-			  log ("Incorrecto", 'red');
+			  log ("Respuesta incorrecta", 'red');
 			  log ("Fin del juego", 'red');
 			  biglog(`Puntuacion ${colorize(score,'magenta')} `);
 			  rl.prompt();

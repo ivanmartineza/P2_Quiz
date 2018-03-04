@@ -88,12 +88,12 @@ exports.testCmd = (rl,id) =>{
 	   } else {
 		  try{
 		  const quiz = model.getByIndex(id);
-		  rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), answer => {
-		  if(answer.toLowerCase().trim()=== quiz.answer.toLowerCase().trim()){
-				log("Correcto",'green');
+		  rl.question(colorize(`${quiz.question}`, 'red'), respuesta1 => {
+		  if(respuesta1.toLowerCase().trim()=== (quiz.answer).toLowerCase().trim()){
+				log("Respuesta correcta",'green');
 				//rl.prompt();
-		   } else{
-			  log ("Incorrecto", 'red');
+		    } else{
+			  log ("Respuesta incorrecta", 'red');
 			  }
 			  rl.prompt();
 		   });
@@ -125,8 +125,8 @@ exports.playCmd = rl =>{
 		    let quiz= toBeResolved[randomId];
             // let quiz = model.getByIndex(id);
 			//toBeResolved.splice(toBeResolved.indexOf(quizToAsk), 1);
-		    rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), answer => {
-		    if(answer.toLowerCase().trim()=== (quiz.answer).toLowerCase().trim()){
+		    rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), respuesta2 => {
+		    if(respuesta2.toLowerCase().trim()=== (quiz.answer).toLowerCase().trim()){
 				log("Correcto",'green');
 				score ++;
 				log(`Puntuacion ${colorize(score,'green')} `);

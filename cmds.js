@@ -114,9 +114,9 @@ exports.playCmd = rl =>{
 	  
 	 const playOne = () =>{
 	      if ( toBeResolved.length === 0 ){
-		  log ('No hay mas preguntas');
-		  log('Eliminado. Aciertos : ${score}');
-		  log( score, 'red');
+		  log ('No hay mas preguntas','magenta');
+		  log('Fin del juego', 'magenta');
+		   biglog(`Puntuacion ${colorize(score,'magenta')} `);
 		  rl.prompt();
 	      }
 	     else{
@@ -137,7 +137,7 @@ exports.playCmd = rl =>{
 		     } else{
 			  log ("Incorrecto", 'red');
 			  biglog ("Fin del juego", 'red');
-			  log(`Puntuacion ${colorize(score,'magenta')} `);
+			  biglog(`Puntuacion ${colorize(score,'magenta')} `);
 			  rl.prompt();
 			 }
 		   });

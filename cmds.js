@@ -130,12 +130,13 @@ exports.playCmd = rl =>{
 				log("Correcto",'green');
 				score ++;
 				log(`Puntuacion ${colorize(score,'green')} `);
-				model.update();
-			    delete(toBeResolved[randomId]);
+				//model.update();
+			    toBeResolved.splice(randomId,1);
 				playOne();
 
 		     } else{
 			  log ("Incorrecto", 'red');
+			  biglog ("Fin del juego", 'red');
 			  log(`Puntuacion ${colorize(score,'magenta')} `);
 			  rl.prompt();
 			 }

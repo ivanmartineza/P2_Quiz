@@ -115,7 +115,7 @@ exports.playCmd = rl =>{
 	 const playOne = () =>{
 	      if ( toBeResolved.length === 0 ){
 		  log ('No hay mas preguntas','magenta');
-		  log('Fin del juego', 'magenta');
+		  log("Fin del juego", 'magenta');
 		   biglog(`Puntuacion ${colorize(score,'magenta')} `);
 		  rl.prompt();
 	      }
@@ -136,7 +136,7 @@ exports.playCmd = rl =>{
 
 		     } else{
 			  log ("Incorrecto", 'red');
-			  biglog ("Fin del juego", 'red');
+			  log ("Fin del juego", 'red');
 			  biglog(`Puntuacion ${colorize(score,'magenta')} `);
 			  rl.prompt();
 			 }

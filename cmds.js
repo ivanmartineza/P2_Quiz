@@ -129,7 +129,7 @@ exports.playCmd = rl =>{
 		    if(answer.toLowerCase().trim()=== (quiz.answer).toLowerCase().trim()){
 				log("Correcto",'green');
 				score ++;
-				log(`Puntuacion ${colorize(score,'verde')} `);
+				log(`Puntuacion ${colorize(score,'green')} `);
 				model.update();
 			    delete(toBeResolved[randomId]);
 				playOne();

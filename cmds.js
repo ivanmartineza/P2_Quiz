@@ -109,27 +109,29 @@ exports.playCmd = rl =>{
 	 let score = 0;
 	 let toBeResolved = [];
 	  model.getAll().forEach((quiz, id) => {
-        toBeResolved.push(quiz);
+        toBeResolved[id]= quiz;
       });
 	  
 	 const playOne = () =>{
 	      if ( toBeResolved.length === 0 ){
 		  log ('No hay mas preguntas');
+		  log('Eliminado. Aciertos : ${score}');
+		  log( score, 'red');
 		  rl.prompt();
 	      }
 	     else{
 	       try{
             let randomId = Math.floor(Math.random()*toBeResolved.length);
-		    let id = toBeResolved[randomId];
-            let quiz = model.getByIndex(id);
+		    let quiz= toBeResolved[randomId];
+            // let quiz = model.getByIndex(id);
 			//toBeResolved.splice(toBeResolved.indexOf(quizToAsk), 1);
 		    rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), answer => {
-		    if(answer.toLowerCase().trim()=== quiz.answer.toLowerCase().trim()){
+		    if(answer.toLowerCase().trim()=== (quiz.answer).toLowerCase().trim()){
 				log("Correcto",'green');
 				score ++;
 				log(`Puntuacion ${colorize(score,'verde')} `);
 				model.update();
-			    delete(toBeResolved(id));
+			    delete(toBeResolved[randomId]);
 				playOne();
 
 		     } else{

@@ -83,19 +83,19 @@ exports.editCmd = (rl, id) => {
 
 exports.testCmd = (rl,id) =>{
 	   if (typeof id === "undefined"){
-		errorlog('Falta el parametro id');
+		errorlog('Falta el parametro id.');
 		rl.prompt();
 	   } else {
 		  try{
 		  const quiz = model.getByIndex(id);
-		  rl.question(quiz.question, answer => {
+		  rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), answer => {
 		  if(answer.toLowerCase().trim()=== quiz.answer.toLowerCase().trim()){
 				log("Correcto",'green');
-				rl.prompt();
+				//rl.prompt();
 		   } else{
 			  log ("Incorrecto", 'red');
-			  rl.prompt();
 			  }
+			  rl.prompt();
 		   });
 		   }catch(error){
 			errorlog(error.message);

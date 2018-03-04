@@ -88,7 +88,7 @@ exports.testCmd = (rl,id) =>{
 	   } else {
 		  try{
 		  const quiz = model.getByIndex(id);
-		  rl.question((quiz.question), answer => {
+		  rl.question(quiz.question, answer => {
 		  if(answer.toLowerCase().trim()=== quiz.answer.toLowerCase().trim()){
 				log("Correcto",'green');
 				rl.prompt();
@@ -108,9 +108,9 @@ exports.playCmd = rl =>{
 	   
 	 let score = 0;
 	 let toBeResolved = [];
-	 for (var i = 0; i < model.count() ;i++) {
-		toBeResolved[i]=model.getByIndex(i);
-	 }
+	  model.getAll().forEach((quiz, id) => {
+        toBeResolved.push(quiz);
+      });
 	  
 	 const playOne = () =>{
 	      if ( toBeResolved.length === 0 ){
@@ -122,6 +122,7 @@ exports.playCmd = rl =>{
             let randomId = Math.floor(Math.random()*toBeResolved.length);
 		    let id = toBeResolved[randomId];
             let quiz = model.getByIndex(id);
+			//toBeResolved.splice(toBeResolved.indexOf(quizToAsk), 1);
 		    rl.question(colorize(`Pregunta:  ${quiz.question}`, 'red'), answer => {
 		    if(answer.toLowerCase().trim()=== quiz.answer.toLowerCase().trim()){
 				log("Correcto",'green');
